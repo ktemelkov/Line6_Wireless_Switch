@@ -1,16 +1,27 @@
 {
+    "env": {
+        "arduino.pkgpath": "C:/Users/kteme/AppData/Local/Arduino15/packages/arduino"
+    },
     "configurations": [
         {
             "name": "Win32",
             "includePath": [
-                "C:\\Users\\kteme\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\**",
-                "C:\\Users\\kteme\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.6.20\\**"
+                "${workspaceFolder}/**",
+                "${arduino.pkgpath}/hardware/avr/1.6.20/variants/standard"
             ],
             "forcedInclude": [
-                "C:\\Users\\kteme\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.6.20\\cores\\arduino\\Arduino.h"
+                "Arduino.h"
             ],
-            "intelliSenseMode": "msvc-x64",
-            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/cl.exe",
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "",
+                "path": [
+                    "${arduino.pkgpath}/hardware/avr/1.6.20/cores/arduino",
+                    "${arduino.pkgpath}/hardware/avr/1.6.20/libraries"
+                ]
+            },
+            "intelliSenseMode": "clang-x64",
+            "compilerPath": "${arduino.pkgpath}/tools/avr-gcc/4.9.2-atmel3.5.3-arduino/bin/avr-c++.exe",
             "cStandard": "c11",
             "cppStandard": "c++17"
         }

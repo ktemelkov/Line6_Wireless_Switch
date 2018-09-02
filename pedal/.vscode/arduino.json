@@ -1,5 +1,5 @@
 {
     "sketch": "pedal_controller.ino",
     "board": "arduino:avr:pro",
-    "configuration": "cpu=16MHzatmega328"
+    "configuration": "cpu=8MHzatmega168"
 }
