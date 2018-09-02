@@ -99,11 +99,11 @@ void decodeCommand(uint16_t command) {
 void handleRadio() {
     uint16_t command = 0;
 
-	if (_radio.available()) {
+    if (_radio.available()) {
         _radio.read(&command, 2);
 
         decodeCommand(command);
-	}
+    }
 }
 
 
@@ -180,19 +180,19 @@ void handleFBV() {
  */
 int pollButton(uint8_t* pHist, uint8_t pin)
 {
-	*pHist = (*pHist << 1) | !digitalRead(pin);
+    *pHist = (*pHist << 1) | !digitalRead(pin);
 
-	if ((*pHist & 0b11000111) == 0b00000111)
-	{	
+    if ((*pHist & 0b11000111) == 0b00000111)
+    {	
         *pHist = 0xFF;
         return BUTTON_PRESSED;
-	}
-	
-	if ((*pHist & 0b11000111) == 0b11000000)
-	{
+    }
+
+    if ((*pHist & 0b11000111) == 0b11000000)
+    {
         *pHist = 0x00;
         return BUTTON_RELEASED;
-	}
+    }
 
     return BUTTON_NO_CHANGE;
 }
