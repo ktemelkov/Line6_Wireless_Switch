@@ -100,7 +100,7 @@ void handleRadio() {
     uint16_t command = 0;
 
 	if (_radio.available()) {
-		_radio.read(&command, 2);
+        _radio.read(&command, 2);
 
         decodeCommand(command);
 	}
@@ -184,13 +184,13 @@ int pollButton(uint8_t* pHist, uint8_t pin)
 
 	if ((*pHist & 0b11000111) == 0b00000111)
 	{	
-		*pHist = 0xFF;
+        *pHist = 0xFF;
         return BUTTON_PRESSED;
 	}
 	
 	if ((*pHist & 0b11000111) == 0b11000000)
 	{
-		*pHist = 0x00;
+        *pHist = 0x00;
         return BUTTON_RELEASED;
 	}
 
