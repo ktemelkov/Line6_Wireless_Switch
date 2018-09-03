@@ -1,32 +1,14 @@
 #include <Arduino.h>
 #include <RF24.h>
 #include "../include/const.h"
+#include "../include/fbv.h"
 
 
-RF24 _radio(7, 8);
-
-
-#define BUTTON_PIN_A 2 
+#define BUTTON_PIN_A 2
 #define BUTTON_PIN_B 3
 
 
-
-/**
- * 
- */
-typedef struct tagFBVMessage {
-    uint8_t start;
-    uint8_t len;
-    uint8_t command;
-    uint8_t data[255];
-} __attribute__ ((packed)) FBVMessage_t;
-
-
-const FBVMessage_t FBV_HEART_BEAT_REPLY PROGMEM = { 0xF0, 0x07, 0x80, { 0x00, 0x02, 0x00, 0x01, 0x01, 0x00 } };
-const FBVMessage_t FBV_BOOT_MESSAGE PROGMEM = { 0xF0, 0x02, 0x90, { 0x00 } };
-const FBVMessage_t FBV_BOOT_MESSAGE2 PROGMEM = { 0xF0, 0x02, 0x30, { 0x08 } };
-const FBVMessage_t FBV_SETTINGS_REQUEST PROGMEM = { 0xF0, 0x03, 0x80, { 0x00, 01 } };
-const FBVMessage_t FBV_BUTTON_MESSAGE PROGMEM = { 0xF0, 0x03, 0x81, { 0x00 } };
+RF24 _radio(7, 8);
 
 
 void sendFbvMessage(const FBVMessage_t& msg);
