@@ -4,7 +4,7 @@
 #include "../include/const.h"
 
 
-RF24 _radio(7, 8);
+RF24 _radio(9, 10);
 
 
 uint8_t histA = 0;

@@ -2,5 +2,8 @@
     "terminal.integrated.env.windows": {
         "PATH": "${env:USERPROFILE}\\.platformio\\penv\\Scripts;${env:USERPROFILE}\\.platformio\\penv;${env:USERPROFILE}\\.platformio\\penv\\Scripts;${env:USERPROFILE}\\.platformio\\penv;${env:PATH}",        
         "PLATFORMIO_CALLER": "vscode"
-    }
+    },
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "team.appInsights.enabled": false
 }

@@ -8,7 +8,7 @@
 #define BUTTON_PIN_B 3
 
 
-RF24 _radio(7, 8);
+RF24 _radio(9, 10);
 
 
 void sendFbvMessage(const FBVMessage_t& msg);
@@ -20,14 +20,14 @@ void sendFbvMessage(const FBVMessage_t& msg);
 void setup() {
     Serial.begin(31250);
 
-    delay(200);
-
     _radio.begin();
+    _radio.stopListening();
     _radio.setPayloadSize(2);
     _radio.openReadingPipe(0, _radio_address);
     _radio.startListening();
 
-    delay(500);
+    pinMode(BUTTON_PIN_A, INPUT_PULLUP);
+    pinMode(BUTTON_PIN_B, INPUT_PULLUP);
 
     sendFbvMessage(FBV_BOOT_MESSAGE);
     sendFbvMessage(FBV_BOOT_MESSAGE2);
@@ -38,7 +38,7 @@ void setup() {
 /**
  * 
  */
-FBVMessage_t initFbvButtonMessage(uint8_t button, uint8_t value) {
+const FBVMessage_t initFbvButtonMessage(uint8_t button, uint8_t value) {
     FBVMessage_t res = FBV_BUTTON_MESSAGE;
     res.data[0] = button;
     res.data[1] = value % 2;
@@ -94,7 +94,7 @@ void handleRadio() {
  * 
  */
 void sendFbvMessage(const FBVMessage_t& msg) {
-    Serial.write((uint8_t*)&msg, (size_t)(2 + msg.len));
+    Serial.write((const uint8_t*)&msg, msg.len + 2);
 }
 
 
